@@ -1,0 +1,12 @@
+.navigation {
+  border-bottom: 2px solid rgb(24, 23, 23);
+  padding-bottom: 20px;
+}
+.nav_item {
+  margin-left: 40px;
+  font-size: 18px;
+  font-family: 'georgia';
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+}

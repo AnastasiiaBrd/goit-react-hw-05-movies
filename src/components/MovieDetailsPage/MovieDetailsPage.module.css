@@ -1,0 +1,13 @@
+.movie_info {
+  display: flex;
+  margin-top: 15px;
+  border-bottom: 2px solid rgb(24, 23, 23);
+  padding-bottom: 20px;
+}
+.info {
+  padding-left: 15px;
+}
+.additional_info {
+  border-bottom: 2px solid rgb(24, 23, 23);
+  padding-bottom: 20px;
+}
