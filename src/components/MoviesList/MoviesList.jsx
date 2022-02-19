@@ -6,12 +6,13 @@ const MoviesList = ({ movies }) => {
 
   const location = useLocation();
   console.log(location);
-  return movies.map(movie => (
+  const movieList = movies.map(movie => (
     <li className={s.movie_list} key={movie.id}>
       <Link to={`/movies/${movie.id}`} state={{ from: location }}>
         {movie.title}
       </Link>
     </li>
   ));
+  return <ul> {movieList}</ul>;
 };
 export default MoviesList;
