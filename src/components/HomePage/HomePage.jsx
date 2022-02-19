@@ -1,8 +1,5 @@
-// import MoviesList from 'components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-// import s from './HomePage.module.css';
 
 const MoviesList = lazy(() => import('../MoviesList/MoviesList'));
 
@@ -27,8 +24,3 @@ https://api.themoviedb.org/3/trending/movie/day?api_key=7164f6a6786f95a54ebe2319
     </>
   );
 }
-// popularMovies.map(popularMovie => (
-//   <li className={s.movie_list} key={popularMovie.id}>
-//     <Link to={`movies/${popularMovie.id}`}>{popularMovie.title}</Link>
-//   </li>
-// ))

@@ -49,10 +49,3 @@ https://api.themoviedb.org/3/search/movie?api_key=7164f6a6786f95a54ebe23199620cc
     </>
   );
 }
-// resultMovies.results.map(resultMovie => (
-//   <li className={s.movie_list} key={resultMovie.id}>
-//     <Link to={`${resultMovie.id}`} state={{ from: location }}>
-//       {resultMovie.title}
-//     </Link>
-//   </li>
-// ))
