@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import s from './MoviesPage.module.css';
+import { lazy, Suspense } from 'react';
+
+const MoviesList = lazy(() => import('../MoviesList/MoviesList'));
 
 export default function MoviesPage() {
   //   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [resultMovies, setResultMovies] = useState('');
+  const location = useLocation();
   const query = searchParams.get('query');
 
   const handleSubmit = e => {
@@ -22,7 +26,9 @@ export default function MoviesPage() {
       fetch(`
 https://api.themoviedb.org/3/search/movie?api_key=7164f6a6786f95a54ebe23199620cc0a&query=${query}&language=en-US&page=1&include_adult=false`)
         .then(res => res.json())
-        .then(setResultMovies);
+        .then(data => {
+          setResultMovies(data.results);
+        });
     }
     console.log(query);
   }, [query]);
@@ -36,13 +42,17 @@ https://api.themoviedb.org/3/search/movie?api_key=7164f6a6786f95a54ebe23199620cc
         </button>
       </form>
       <>
-        {resultMovies &&
-          resultMovies.results.map(resultMovie => (
-            <li className={s.movie_list} key={resultMovie.id}>
-              <Link to={`${resultMovie.id}`}>{resultMovie.title}</Link>
-            </li>
-          ))}
+        <Suspense fallback={<h1>Loading</h1>}>
+          {resultMovies && <MoviesList movies={resultMovies} />}
+        </Suspense>
       </>
     </>
   );
 }
+// resultMovies.results.map(resultMovie => (
+//   <li className={s.movie_list} key={resultMovie.id}>
+//     <Link to={`${resultMovie.id}`} state={{ from: location }}>
+//       {resultMovie.title}
+//     </Link>
+//   </li>
+// ))

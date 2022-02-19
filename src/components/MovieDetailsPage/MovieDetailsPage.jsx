@@ -13,14 +13,13 @@ export default function MovieDetailsPage() {
 https://api.themoviedb.org/3/movie/${movieId}?api_key=7164f6a6786f95a54ebe23199620cc0a&language=en-US`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setDetailsPage(data);
       });
   }, [movieId]);
 
   return (
     <>
-      <Button />
+      <Button location={location.state.from} />
       {detailsPage && (
         <>
           <div className={s.movie_info}>
@@ -51,12 +50,12 @@ https://api.themoviedb.org/3/movie/${movieId}?api_key=7164f6a6786f95a54ebe231996
             <h4>Additional information</h4>
             <ul>
               <li>
-                <Link to={{ pathname: `cast`, state: { from: location } }}>
+                <Link to={`cast`} state={{ from: location.state.from }}>
                   Cast
                 </Link>
               </li>
               <li>
-                <Link to={{ pathname: `reviews`, state: { from: location } }}>
+                <Link to={`reviews`} state={{ from: location.state.from }}>
                   Reviews
                 </Link>
               </li>

@@ -9,6 +9,7 @@ const MovieDetailsPage = lazy(() =>
 );
 const Cast = lazy(() => import('./components/Cast/Cast.jsx'));
 const Reviews = lazy(() => import('./components/Reviews/Reviews.jsx'));
+
 export default function App() {
   return (
     <>
